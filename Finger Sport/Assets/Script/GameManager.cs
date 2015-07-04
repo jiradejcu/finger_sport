@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+	public float xOffset;
 	const int floorCount = 5;
 	Queue<GameObject> floorQueue;
 	GameObject floorPrototype;
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Camera.main.transform.position.x > floorQueue.Peek ().transform.position.x + 20f) {
+		if (Camera.main.transform.position.x > floorQueue.Peek ().transform.position.x + xOffset) {
 			CreateTileFloor (new Vector3 (floorWidth * floorIndex++, 0f));
 			GameObject firstFloor = floorQueue.Dequeue ();
 			Destroy (firstFloor);
